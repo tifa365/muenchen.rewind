@@ -2,8 +2,6 @@
 
 Eine Zeitreise aus der Vogelperspektive – Vergleiche historische Luftbilder von München aus verschiedenen Jahren.
 
-**GitHub**: [github.com/tifa365/muenchen.rewind](https://github.com/tifa365/muenchen.rewind)
-
 ## Features
 
 - **Vergleichsmodus**: Zwei Luftbilder nebeneinander mit verschiebbarem Slider
