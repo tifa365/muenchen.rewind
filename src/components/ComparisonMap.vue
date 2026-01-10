@@ -1,26 +1,6 @@
 <template>
   <div class="comparison-container" ref="container">
-    <!-- Right map (bottom layer) -->
-    <div class="map-layer right-map" id="rightMap"></div>
-
-    <!-- Left map (top layer, clipped) -->
-    <div
-      class="map-layer left-map"
-      id="leftMap"
-      :style="{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }"
-    ></div>
-
-    <!-- Slider line and handle -->
-    <div
-      class="slider-line"
-      :style="{ left: `${sliderPos}%` }"
-      @mousedown="startDrag"
-      @touchstart.passive="startDrag"
-    >
-      <div class="slider-handle">
-        <span class="handle-icon">⟷</span>
-      </div>
-    </div>
+    <div class="map-layer" id="comparisonMap"></div>
 
     <!-- Year labels -->
     <div class="year-label left" :style="{ right: `${100 - sliderPos + 2}%` }">
@@ -29,12 +9,19 @@
     <div class="year-label right" :style="{ left: `${sliderPos + 2}%` }">
       {{ getYear(rightMap) }}
     </div>
+
+    <!-- Loading overlay -->
+    <div v-if="isLoading" class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <span>Lade Luftbilder...</span>
+    </div>
   </div>
 </template>
 
 <script>
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
+import 'leaflet-side-by-side'
 
 export default {
   name: 'ComparisonMap',
@@ -46,56 +33,85 @@ export default {
   },
   data() {
     return {
-      leftLeaflet: null,
-      rightLeaflet: null,
+      leafletMap: null,
       leftLayer: null,
       rightLayer: null,
+      sideBySide: null,
       sliderPos: 50,
-      isDragging: false,
-      isSyncing: false
+      leftLoaded: false,
+      rightLoaded: false
+    }
+  },
+  computed: {
+    isLoading() {
+      return !this.leftLoaded || !this.rightLoaded
     }
   },
   methods: {
-    setupMaps() {
-      // Create right map (base layer)
-      this.rightLeaflet = L.map('rightMap', {
+    setupMap() {
+      this.leafletMap = L.map('comparisonMap', {
+        zoomSnap: 0.5,
+        zoomAnimation: true,
         zoomControl: false
       }).setView(this.center, this.zoom)
 
-      // Create left map (clipped layer)
-      this.leftLeaflet = L.map('leftMap', {
-        zoomControl: false
-      }).setView(this.center, this.zoom)
-
-      // Add zoom control only to right map
-      L.control.zoom({ position: 'bottomright' }).addTo(this.rightLeaflet)
-
-      // Sync maps
-      this.rightLeaflet.on('move', this.syncLeftToRight)
-      this.leftLeaflet.on('move', this.syncRightToLeft)
+      L.control.zoom({ position: 'bottomright' }).addTo(this.leafletMap)
 
       this.updateLayers()
+
+      // Track slider position for year labels
+      this.leafletMap.on('move', this.updateSliderPos)
     },
-    syncLeftToRight() {
-      if (this.isSyncing) return
-      this.isSyncing = true
-      this.leftLeaflet.setView(this.rightLeaflet.getCenter(), this.rightLeaflet.getZoom(), { animate: false })
-      this.isSyncing = false
-    },
-    syncRightToLeft() {
-      if (this.isSyncing) return
-      this.isSyncing = true
-      this.rightLeaflet.setView(this.leftLeaflet.getCenter(), this.leftLeaflet.getZoom(), { animate: false })
-      this.isSyncing = false
+    updateSliderPos() {
+      const slider = this.$refs.container?.querySelector('.leaflet-sbs-divider')
+      if (slider) {
+        const container = this.$refs.container
+        const rect = container.getBoundingClientRect()
+        const sliderRect = slider.getBoundingClientRect()
+        this.sliderPos = ((sliderRect.left - rect.left + sliderRect.width / 2) / rect.width) * 100
+      }
     },
     updateLayers() {
-      // Remove old layers
-      if (this.leftLayer) this.leftLeaflet.removeLayer(this.leftLayer)
-      if (this.rightLayer) this.rightLeaflet.removeLayer(this.rightLayer)
+      // Reset loading state
+      this.leftLoaded = false
+      this.rightLoaded = false
 
-      // Add new layers
-      this.leftLayer = this.createLayer(this.leftMap).addTo(this.leftLeaflet)
-      this.rightLayer = this.createLayer(this.rightMap).addTo(this.rightLeaflet)
+      // Remove old side-by-side control and layers
+      if (this.sideBySide) {
+        this.sideBySide.remove()
+      }
+      if (this.leftLayer) {
+        this.leafletMap.removeLayer(this.leftLayer)
+      }
+      if (this.rightLayer) {
+        this.leafletMap.removeLayer(this.rightLayer)
+      }
+
+      // Create new layers
+      this.leftLayer = this.createLayer(this.leftMap)
+      this.rightLayer = this.createLayer(this.rightMap)
+
+      // Track loading
+      this.leftLayer.on('load', () => { this.leftLoaded = true })
+      this.rightLayer.on('load', () => { this.rightLoaded = true })
+
+      // Add layers to map
+      this.leftLayer.addTo(this.leafletMap)
+      this.rightLayer.addTo(this.leafletMap)
+
+      // Create side-by-side control
+      this.sideBySide = L.control.sideBySide(this.leftLayer, this.rightLayer).addTo(this.leafletMap)
+
+      // Update slider position after control is added
+      this.$nextTick(() => {
+        this.updateSliderPos()
+        // Listen for slider drag
+        const slider = this.$refs.container?.querySelector('.leaflet-sbs-divider')
+        if (slider) {
+          const observer = new MutationObserver(() => this.updateSliderPos())
+          observer.observe(slider, { attributes: true, attributeFilter: ['style'] })
+        }
+      })
     },
     createLayer(map) {
       if (map.type === 'wms') {
@@ -105,47 +121,24 @@ export default {
     },
     getYear(map) {
       return map?.name?.split(' ')[1] || ''
-    },
-    startDrag() {
-      this.isDragging = true
-      document.addEventListener('mousemove', this.onDrag)
-      document.addEventListener('mouseup', this.stopDrag)
-      document.addEventListener('touchmove', this.onDrag)
-      document.addEventListener('touchend', this.stopDrag)
-    },
-    onDrag(e) {
-      if (!this.isDragging) return
-      const container = this.$refs.container
-      const rect = container.getBoundingClientRect()
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX
-      const x = clientX - rect.left
-      this.sliderPos = Math.max(0, Math.min(100, (x / rect.width) * 100))
-    },
-    stopDrag() {
-      this.isDragging = false
-      document.removeEventListener('mousemove', this.onDrag)
-      document.removeEventListener('mouseup', this.stopDrag)
-      document.removeEventListener('touchmove', this.onDrag)
-      document.removeEventListener('touchend', this.stopDrag)
     }
   },
   watch: {
     leftMap() {
-      this.updateLayers()
+      if (this.leafletMap) this.updateLayers()
     },
     rightMap() {
-      this.updateLayers()
+      if (this.leafletMap) this.updateLayers()
     },
     center(newCenter) {
-      this.rightLeaflet?.setView(newCenter, this.zoom)
+      this.leafletMap?.setView(newCenter, this.zoom)
     }
   },
   mounted() {
-    this.setupMaps()
+    this.setupMap()
   },
   beforeUnmount() {
-    if (this.leftLeaflet) this.leftLeaflet.remove()
-    if (this.rightLeaflet) this.rightLeaflet.remove()
+    if (this.leafletMap) this.leafletMap.remove()
   }
 }
 </script>
@@ -165,49 +158,6 @@ export default {
   bottom: 0;
 }
 
-.left-map {
-  z-index: 2;
-  pointer-events: none;
-}
-
-.right-map {
-  z-index: 1;
-}
-
-.slider-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: white;
-  transform: translateX(-50%);
-  z-index: 10;
-  cursor: ew-resize;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.slider-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  cursor: ew-resize;
-}
-
-.handle-icon {
-  font-size: 18px;
-  color: #333;
-  user-select: none;
-}
-
 .year-label {
   position: absolute;
   bottom: 20px;
@@ -217,15 +167,53 @@ export default {
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 18px;
-  z-index: 5;
+  z-index: 1000;
   text-shadow: 1px 1px 0 #000;
+  pointer-events: none;
 }
 
-.year-label.left {
-  /* positioned dynamically */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  color: white;
+  font-size: 16px;
+  gap: 15px;
 }
 
-.year-label.right {
-  /* positioned dynamically */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffcc00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
+<style>
+/* Override leaflet-side-by-side slider styles */
+.leaflet-sbs-divider {
+  width: 4px !important;
+  background: white !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+.leaflet-sbs-range {
+  cursor: ew-resize;
 }
 </style>

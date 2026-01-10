@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.37.0",
     "leaflet": "^1.9.4",
+    "leaflet-side-by-side": "^2.2.0",
     "vue": "^3.4.0"
   },
   "devDependencies": {

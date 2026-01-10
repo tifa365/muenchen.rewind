@@ -25,9 +25,16 @@
           >Vergleichen</button>
         </div>
 
-        <form @submit.prevent="searchLocation()">
-          <input class="search-input" type="search" placeholder="Adresse suchen" v-model="searchString" />
-        </form>
+        <div class="search-container">
+          <form @submit.prevent="searchLocation()">
+            <input class="search-input" type="search" placeholder="Adresse suchen" v-model="searchString" @input="debouncedSearch" @focus="showResults = true" />
+          </form>
+          <ul v-if="searchResults.length > 0 && showResults" class="search-results">
+            <li v-for="(result, index) in searchResults" :key="index" @click="selectResult(result)">
+              {{ result.display_name }}
+            </li>
+          </ul>
+        </div>
 
         <select class="map-select" v-model="currentMapIndex" @update="changeMap(index)">
           <option v-for="(map, index) in maps" :key="index" :value="index">
@@ -92,9 +99,12 @@
     data() {
       return {
         currentMapIndex: this.maps.indexOf(this.map),
-        leftMapIndex: 0,  // 2024
+        leftMapIndex: 2,  // 2021
         rightMapIndex: this.maps.length > 1 ? this.maps.length - 1 : 0,  // 2003
         searchString: '',
+        searchResults: [],
+        showResults: false,
+        searchTimeout: null,
         info: false
       }
     },
@@ -119,17 +129,34 @@
           right: this.maps[this.rightMapIndex]
         })
       },
+      debouncedSearch: function() {
+        clearTimeout(this.searchTimeout)
+        if (this.searchString.length < 2) {
+          this.searchResults = []
+          return
+        }
+        this.searchTimeout = setTimeout(() => {
+          this.searchLocation()
+        }, 300)
+      },
       searchLocation: function() {
         if (this.searchString) {
-          const url = 'https://nominatim.openstreetmap.org/search?format=json&q=Bayern ' + encodeURIComponent(this.searchString)
+          // Bounding box for Munich area
+          const bbox = '11.36,48.06,11.79,48.25'
+          const url = `https://nominatim.openstreetmap.org/search?format=json&bounded=1&viewbox=${bbox}&limit=5&q=${encodeURIComponent(this.searchString)}`
           fetch(url)
             .then(response => response.json())
             .then(json => {
-              if (json.length > 0) {
-                this.$emit('changeCenter', [json[0].lat, json[0].lon])
-              }
+              this.searchResults = json
+              this.showResults = true
             })
         }
+      },
+      selectResult: function(result) {
+        this.$emit('changeCenter', [parseFloat(result.lat), parseFloat(result.lon)])
+        this.searchResults = []
+        this.showResults = false
+        this.searchString = ''
       },
       toggleInfo: function() {
         this.info = !this.info
@@ -211,15 +238,18 @@
       }
     }
 
-    .search-input {
-      @media (max-width: $break-point) {
-        margin-bottom: 10px;
-      }
-    }
-
     .map-select {
       @media (min-width: $break-point) {
         display: none;
+      }
+    }
+
+    .search-container {
+      position: relative;
+
+      @media (max-width: $break-point) {
+        width: 100%;
+        margin-bottom: 10px;
       }
     }
 
@@ -238,6 +268,39 @@
 
       @media (min-width: $break-point) {
         width: 400px;
+      }
+    }
+
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid silver;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+      li {
+        padding: 8px 10px;
+        cursor: pointer;
+        font-size: 13px;
+        border-bottom: 1px solid #eee;
+
+        &:hover {
+          background: #f5f5f5;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
     }
 

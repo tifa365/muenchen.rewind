@@ -1,14 +1,54 @@
-# [luftbilder.berlin.codefor.de](https://luftbilder.berlin.codefor.de/)
+# Muenchen.rewind
 
-A showcase of aerial imagery of different years for the city of Berlin.
+Eine Zeitreise aus der Vogelperspektive – Vergleiche historische Luftbilder von München aus verschiedenen Jahren.
 
-## Other projects
+**GitHub**: [github.com/tifa365/muenchen.rewind](https://github.com/tifa365/muenchen.rewind)
 
-* [maps.berlin.codefor.de](https://data.berlin.codefor.de) a general overview of map data [Github](https://github.com/codeforberlin/maps.berlin.codefor.de) 
-* [github.com/codeforberlin/mapproxy-config](https://github.com/codeforberlin/mapproxy-config) is a map proxy for some imagery layers by the City of Berlin
-* [github.com/codeforberlin/tilestache-config](https://github.com/codeforberlin/tilestache-config) is the config for serving areal imagery from file ([config](https://github.com/codeforberlin/tilestache-config/blob/master/config.json))
+## Features
 
-## Data source
+- **Vergleichsmodus**: Zwei Luftbilder nebeneinander mit verschiebbarem Slider
+- **Einzelansicht**: Durchblättern aller verfügbaren Jahre
+- **Adresssuche**: Finde Orte in München per Nominatim-Suche
+- **Verfügbare Jahre**: 2024, 2022, 2021, 2020, 2018, 2015, 2012, 2009, 2006, 2003
 
-The data is sourced from the FIS Broker, City of Berlin.
-Find the code at [github.com/codeforberlin/fis-broker](https://github.com/codeforberlin/fis-broker)
+## Datenquellen
+
+Die Luftbilder stammen aus zwei Open-Data-Quellen:
+
+### Bayerische Vermessungsverwaltung
+- **Jahre**: 2024, 2022, 2020, 2018, 2015, 2012, 2009, 2006, 2003
+- **Quelle**: [GeodatenOnline Portal](https://geodatenonline.bayern.de/)
+- **Dienst**: WMS Historische Digitale Orthophotos
+- **Auflösung**: 20cm (ab 2006), 40cm (2003-2005)
+- **Lizenz**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+### GeodatenService München
+- **Jahr**: 2021
+- **Quelle**: [OpenData Portal München](https://opendata.muenchen.de/)
+- **Dienst**: WMS Aktuelle Luftbilder
+- **Auflösung**: 20cm
+- **Lizenz**: dl-de-by-2.0
+- **Hinweis**: Nur Stadtgebiet München (füllt die Lücke im Bayern-Datensatz)
+
+## Entwicklung
+
+```bash
+# Dependencies installieren
+npm install
+
+# Entwicklungsserver starten
+npm run serve
+
+# Produktions-Build erstellen
+npm run build
+```
+
+## Inspiration
+
+Eine inspirierte Nachnutzung von [luftbilder.berlin.codefor.de](https://luftbilder.berlin.codefor.de/) des [OK Lab Berlin](https://codefor.de/berlin).
+
+## Technologie
+
+- Vue 3
+- Leaflet
+- WMS/WMTS Geodienste
