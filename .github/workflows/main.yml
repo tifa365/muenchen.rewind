@@ -13,7 +13,7 @@ jobs:
     - name: 🧰 Use Node.js v15
       uses: actions/setup-node@v4
       with:
-        node-version: '15'
+        node-version: '18'
 
     - name: 📦 Install dependencies
       run: npm ci
