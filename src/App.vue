@@ -1,10 +1,27 @@
 <template>
-  <Nav :brand="brand" :maps="maps" :map="map" @changeMap="changeMap" @changeCenter="changeCenter"/>
-  <Map :map="map" :center="center" :zoom="zoom" />
+  <Nav
+    :brand="brand"
+    :maps="maps"
+    :map="map"
+    :compareMode="compareMode"
+    @changeMap="changeMap"
+    @changeCenter="changeCenter"
+    @update:compareMode="compareMode = $event"
+    @changeCompare="changeCompare"
+  />
+  <Map v-if="!compareMode" :map="map" :center="center" :zoom="zoom" />
+  <ComparisonMap
+    v-else
+    :leftMap="leftMap"
+    :rightMap="rightMap"
+    :center="center"
+    :zoom="zoom"
+  />
 </template>
 
 <script>
   import Map from './components/Map.vue'
+  import ComparisonMap from './components/ComparisonMap.vue'
   import Nav from './components/Nav.vue'
 
   export default {
@@ -15,11 +32,15 @@
         maps: this.$config.maps,
         map: this.$config.maps[0],
         center: this.$config.view.center,
-        zoom: this.$config.view.zoom
+        zoom: this.$config.view.zoom,
+        compareMode: true,
+        leftMap: this.$config.maps[1],  // 2024
+        rightMap: this.$config.maps[this.$config.maps.length - 1]  // 2003
       }
     },
     components: {
       Map,
+      ComparisonMap,
       Nav
     },
     methods: {
@@ -28,6 +49,10 @@
       },
       changeCenter(center) {
         this.center = center
+      },
+      changeCompare({ left, right }) {
+        this.leftMap = left
+        this.rightMap = right
       }
     }
   }
