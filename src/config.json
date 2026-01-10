@@ -5,10 +5,10 @@
   },
   "view": {
     "center": [
-      48.137,
-      11.576
+      48.1364673,
+      11.5944848
     ],
-    "zoom": 14
+    "zoom": 16
   },
   "maps": [
     {
@@ -35,19 +35,6 @@
       }
     },
     {
-      "name": "Luftbilder 2023",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2023_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2023",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
       "name": "Luftbilder 2022",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
@@ -56,19 +43,6 @@
         "format": "image/png",
         "transparent": true,
         "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2022",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2021",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2021_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2021",
         "minZoom": 5,
         "maxZoom": 20
       }
@@ -87,19 +61,6 @@
       }
     },
     {
-      "name": "Luftbilder 2019",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2019_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2019",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
       "name": "Luftbilder 2018",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
@@ -108,32 +69,6 @@
         "format": "image/png",
         "transparent": true,
         "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2018",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2017",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2017_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2017",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2016",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2016_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2016",
         "minZoom": 5,
         "maxZoom": 20
       }
@@ -152,32 +87,6 @@
       }
     },
     {
-      "name": "Luftbilder 2014",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2014_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2014",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2013",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2013_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2013",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
       "name": "Luftbilder 2012",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
@@ -186,32 +95,6 @@
         "format": "image/png",
         "transparent": true,
         "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2012",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2011",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2011_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2011",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2010",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2010_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2010",
         "minZoom": 5,
         "maxZoom": 20
       }
@@ -230,32 +113,6 @@
       }
     },
     {
-      "name": "Luftbilder 2008",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2008_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2008",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2007",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2007_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2007",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
       "name": "Luftbilder 2006",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
@@ -264,32 +121,6 @@
         "format": "image/png",
         "transparent": true,
         "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2006",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2005",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2005_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2005 (40cm)",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
-      "name": "Luftbilder 2004",
-      "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
-      "options": {
-        "layers": "by_dop_2004_h",
-        "format": "image/png",
-        "transparent": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2004 (40cm)",
         "minZoom": 5,
         "maxZoom": 20
       }
