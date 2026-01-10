@@ -92,7 +92,7 @@
     data() {
       return {
         currentMapIndex: this.maps.indexOf(this.map),
-        leftMapIndex: 1,  // 2024
+        leftMapIndex: 0,  // 2024
         rightMapIndex: this.maps.length > 1 ? this.maps.length - 1 : 0,  // 2003
         searchString: '',
         info: false

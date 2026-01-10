@@ -34,7 +34,7 @@
         center: this.$config.view.center,
         zoom: this.$config.view.zoom,
         compareMode: true,
-        leftMap: this.$config.maps[1],  // 2024
+        leftMap: this.$config.maps[0],  // 2024
         rightMap: this.$config.maps[this.$config.maps.length - 1]  // 2003
       }
     },

@@ -12,16 +12,6 @@
   },
   "maps": [
     {
-      "name": "Luftbilder 2025",
-      "type": "tile",
-      "url": "https://wmtsod1.bayernwolke.de/wmts/by_dop/smerc/{z}/{x}/{y}",
-      "options": {
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Digitale Orthophotos",
-        "minZoom": 5,
-        "maxZoom": 20
-      }
-    },
-    {
       "name": "Luftbilder 2024",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",

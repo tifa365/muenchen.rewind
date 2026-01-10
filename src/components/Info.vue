@@ -5,9 +5,6 @@
       <strong>Muenchen.rewind</strong> – Eine Zeitreise von oben.
     </p>
     <p>
-      Die aktuelle Karte zeigt <span v-html="map.options.attribution"></span>.
-    </p>
-    <p>
       Die Luftbilder stammen aus dem <a href="https://geodatenonline.bayern.de/">GeodatenOnline Portal</a> der <a href="https://www.ldbv.bayern.de/">Bayerischen Vermessungsverwaltung</a> und stehen als Open Data zur Verfügung.
     </p>
     <p>
@@ -33,16 +30,19 @@
 
 <style lang="scss" scoped>
   .modal {
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    left: 20%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2000;
 
     background-color: #f2f2f2;
-    box-shadow: 0px 0px 10px silver;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    border-radius: 8px;
 
-    padding: 10px 20px 20px 20px;
+    padding: 20px 30px 30px 30px;
+    max-width: 500px;
+    width: 90%;
 
     pre {
       background-color: #333;
