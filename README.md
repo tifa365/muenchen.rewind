@@ -11,7 +11,15 @@ Eine Zeitreise aus der Vogelperspektive – Vergleiche historische Luftbilder vo
 
 ## Datenquellen
 
-Die Luftbilder stammen aus zwei Open-Data-Quellen:
+### GeodatenService München
+- **Jahr**: 2021
+- **Quelle**: [OpenData Portal München](https://opendata.muenchen.de/)
+- **Dienst**: WMS Aktuelle Luftbilder
+- **Auflösung**: 20cm
+- **Lizenz**: [dl-de-by-2.0](https://www.govdata.de/dl-de/by-2-0)
+- **Hinweis**: Nur Stadtgebiet München
+
+Der GeodatenService München bietet leider keine historischen Luftbilder an. Daher werden für die Zeitreise die Daten der Bayerischen Vermessungsverwaltung genutzt.
 
 ### Bayerische Vermessungsverwaltung
 - **Jahre**: 2024, 2022, 2020, 2018, 2015, 2012, 2009, 2006, 2003
@@ -19,14 +27,6 @@ Die Luftbilder stammen aus zwei Open-Data-Quellen:
 - **Dienst**: WMS Historische Digitale Orthophotos
 - **Auflösung**: 20cm (ab 2006), 40cm (2003-2005)
 - **Lizenz**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-
-### GeodatenService München
-- **Jahr**: 2021
-- **Quelle**: [OpenData Portal München](https://opendata.muenchen.de/)
-- **Dienst**: WMS Aktuelle Luftbilder
-- **Auflösung**: 20cm
-- **Lizenz**: dl-de-by-2.0
-- **Hinweis**: Nur Stadtgebiet München (füllt die Lücke im Bayern-Datensatz)
 
 ## Entwicklung
 
