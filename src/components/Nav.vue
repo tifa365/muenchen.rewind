@@ -93,13 +93,10 @@
         this.$emit('changeMap', index)
       },
       getBackgroundImage: function(map) {
-        if (map.type === 'wms') {
-          // WMS GetMap request for Munich center
-          const bbox = '11.57,48.133,11.585,48.142'
-          return `${map.url}SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${map.options.layers}&STYLES=&FORMAT=image/png&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=300&HEIGHT=80`
-        }
-        // Tile coordinates for Munich center at zoom 16
-        return map.url.replace(/\{z\}\/\{x\}\/\{y\}/i, '16/34866/22741')
+        // Use WMS for all thumbnails (2024 layer for 2025/current)
+        const bbox = '11.58,48.136,11.61,48.140'
+        const layer = map.type === 'wms' ? map.options.layers : 'by_dop_2024_h'
+        return `https://geoservices.bayern.de/od/wms/histdop/v1/histdop?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${layer}&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
       },
       getYear: function(map) {
         return map.name.split(' ')[1]
@@ -223,7 +220,9 @@
     }
 
     .map-year {
-      color: white;
+      color: #ffcc00;
+      font-weight: bold;
+      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
       position: absolute;
       bottom: 2px;
       right: 5px;

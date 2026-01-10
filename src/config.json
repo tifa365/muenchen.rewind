@@ -12,7 +12,7 @@
   },
   "maps": [
     {
-      "name": "Luftbilder aktuell",
+      "name": "Luftbilder 2025",
       "type": "tile",
       "url": "https://wmtsod1.bayernwolke.de/wmts/by_dop/smerc/{z}/{x}/{y}",
       "options": {
