@@ -21,7 +21,7 @@
     },
     methods: {
       setupLeafletMap: function() {
-        this.leafletMap = L.map('map')
+        this.leafletMap = L.map('map', { minZoom: 8 })
         this.changeView()
         this.changeMap()
       },

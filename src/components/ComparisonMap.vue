@@ -2,13 +2,15 @@
   <div class="comparison-container" ref="container">
     <div class="map-layer" id="comparisonMap"></div>
 
-    <!-- Year labels -->
-    <div class="year-label left" :style="{ right: `${100 - sliderPos + 2}%` }">
-      {{ getYear(leftMap) }}
-    </div>
-    <div class="year-label right" :style="{ left: `${sliderPos + 2}%` }">
-      {{ getYear(rightMap) }}
-    </div>
+    <!-- Year labels (only show after loading) -->
+    <template v-if="!isLoading">
+      <div class="year-label left" :style="{ right: `${100 - sliderPos + 2}%` }">
+        {{ getYear(leftMap) }}
+      </div>
+      <div class="year-label right" :style="{ left: `${sliderPos + 2}%` }">
+        {{ getYear(rightMap) }}
+      </div>
+    </template>
 
     <!-- Loading overlay -->
     <div v-if="isLoading" class="loading-overlay">
@@ -52,7 +54,8 @@ export default {
       this.leafletMap = L.map('comparisonMap', {
         zoomSnap: 0.5,
         zoomAnimation: true,
-        zoomControl: false
+        zoomControl: false,
+        minZoom: 8
       }).setView(this.center, this.zoom)
 
       L.control.zoom({ position: 'bottomright' }).addTo(this.leafletMap)
@@ -79,6 +82,7 @@ export default {
       // Remove old side-by-side control and layers
       if (this.sideBySide) {
         this.sideBySide.remove()
+        this.sideBySide = null
       }
       if (this.leftLayer) {
         this.leafletMap.removeLayer(this.leftLayer)
@@ -98,6 +102,9 @@ export default {
       // Add layers to map
       this.leftLayer.addTo(this.leafletMap)
       this.rightLayer.addTo(this.leafletMap)
+    },
+    addSideBySideControl() {
+      if (this.sideBySide) return
 
       // Create side-by-side control
       this.sideBySide = L.control.sideBySide(this.leftLayer, this.rightLayer).addTo(this.leafletMap)
@@ -124,6 +131,11 @@ export default {
     }
   },
   watch: {
+    isLoading(loading) {
+      if (!loading) {
+        this.addSideBySideControl()
+      }
+    },
     leftMap() {
       if (this.leafletMap) this.updateLayers()
     },
@@ -193,7 +205,7 @@ export default {
   width: 40px;
   height: 40px;
   border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffcc00;
+  border-top-color: #FF645F;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
