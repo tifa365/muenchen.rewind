@@ -168,7 +168,7 @@ export default {
   border-radius: 4px;
   font-size: 18px;
   z-index: 1000;
-  text-shadow: 1px 1px 0 #000;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   pointer-events: none;
 }
 

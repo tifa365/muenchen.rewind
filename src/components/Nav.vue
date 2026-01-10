@@ -165,9 +165,12 @@
         this.$emit('changeMap', index)
       },
       getBackgroundImage: function(map) {
-        // Use WMS for all thumbnails (2024 layer for 2025/current)
         const bbox = '11.58,48.136,11.61,48.140'
-        const layer = map.type === 'wms' ? map.options.layers : 'by_dop_2024_h'
+        // 2021 uses Munich WMS, others use Bayern
+        if (map.options.layers === 'luftbild') {
+          return `https://geoportal.muenchen.de/geoserver/gsm/luftbild/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=luftbild&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
+        }
+        const layer = map.options.layers || 'by_dop_2024_h'
         return `https://geoservices.bayern.de/od/wms/histdop/v1/histdop?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${layer}&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
       },
       getYear: function(map) {
@@ -330,10 +333,13 @@
     .map-year {
       color: #ffcc00;
       font-weight: bold;
-      text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.5);
+      padding: 2px 6px;
+      border-radius: 3px;
       position: absolute;
-      bottom: 2px;
-      right: 5px;
+      bottom: 4px;
+      right: 4px;
       margin: 0;
     }
 
