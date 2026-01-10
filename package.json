@@ -1,5 +1,5 @@
 {
-  "name": "luftbilder-bayern",
+  "name": "muenchen-rewind",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -43,11 +43,11 @@
     "not dead"
   ],
   "meta": {
-    "title": "luftbilder.bayern",
-    "description": "Historische Luftbilder aus Bayern",
+    "title": "Muenchen.rewind",
+    "description": "Historische Luftbilder von München - Zeitreise von oben",
     "language": "de",
-    "url": "https://luftbilder.bayern",
-    "image": "https://luftbilder.bayern/screenshot.jpg",
-    "imageAlt": "luftbilder.bayern screenshot"
+    "url": "https://muenchen.rewind",
+    "image": "https://muenchen.rewind/screenshot.jpg",
+    "imageAlt": "Muenchen.rewind screenshot"
   }
 }

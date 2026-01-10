@@ -2,16 +2,16 @@
   <div class="modal">
     <a href="" class="close" @click.prevent="handleClose">&times;</a>
     <p>
-      luftbilder.berlin.codefor.de ist ein Projekt des <a href="https://codefor.de/berlin">OK Lab Berlins</a>. Mehr Karten gibt es auf <a href="https://maps.berlin.codefor.de">maps.berlin.codefor.de</a>.
+      <strong>Muenchen.rewind</strong> – Eine Zeitreise von oben.
     </p>
     <p>
-      Den Source-Code gibt es auf <a href="https://github.com/codeforberlin/luftbilder.berlin.codefor.de">GitHub</a>.
+      Die aktuelle Karte zeigt <span v-html="map.options.attribution"></span>.
     </p>
     <p>
-      Die aktuelle Karte zeigt <span v-html="map.options.attribution"></span>. Hinter dem Link gibt es mehr Informationen.
+      Die Luftbilder stammen aus dem <a href="https://geodatenonline.bayern.de/">GeodatenOnline Portal</a> der <a href="https://www.ldbv.bayern.de/">Bayerischen Vermessungsverwaltung</a> und stehen als Open Data zur Verfügung.
     </p>
     <p>
-      Die Bilder stammen aus dem <a href="https://www.stadtentwicklung.berlin.de/geoinformation/">Geoportal Berlin</a>, das von der Senatsverwaltung für Stadtentwicklung, Bauen und Wohnen des Landes Berlin betrieben wird.
+      Inspiriert von <a href="https://luftbilder.berlin.codefor.de">luftbilder.berlin.codefor.de</a> des <a href="https://codefor.de/berlin">OK Lab Berlin</a>.
     </p>
   </div>
 </template>
