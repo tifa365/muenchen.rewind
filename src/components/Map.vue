@@ -29,7 +29,11 @@
         if (this.leafletLayer) {
           this.leafletMap.removeLayer(this.leafletLayer)
         }
-        this.leafletLayer = L.tileLayer(this.map.url, this.map.options).addTo(this.leafletMap)
+        if (this.map.type === 'wms') {
+          this.leafletLayer = L.tileLayer.wms(this.map.url, this.map.options).addTo(this.leafletMap)
+        } else {
+          this.leafletLayer = L.tileLayer(this.map.url, this.map.options).addTo(this.leafletMap)
+        }
       },
       changeView: function() {
         this.leafletMap.setView(this.center, this.zoom)

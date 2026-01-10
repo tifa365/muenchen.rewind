@@ -76,7 +76,7 @@
     methods: {
       searchLocation: function() {
         if (this.searchString) {
-          const url = 'https://nominatim.openstreetmap.org/search?format=json&q=Berlin ' + encodeURIComponent(this.searchString)
+          const url = 'https://nominatim.openstreetmap.org/search?format=json&q=Bayern ' + encodeURIComponent(this.searchString)
           fetch(url)
             .then(response => response.json())
             .then(json => {
@@ -93,7 +93,13 @@
         this.$emit('changeMap', index)
       },
       getBackgroundImage: function(map) {
-        return map.url.replace(/\{z\}\/\{x\}\/\{y\}/i, '16/35198/21494')
+        if (map.type === 'wms') {
+          // WMS GetMap request for Munich center
+          const bbox = '11.57,48.133,11.585,48.142'
+          return `${map.url}SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${map.options.layers}&STYLES=&FORMAT=image/png&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=300&HEIGHT=80`
+        }
+        // Tile coordinates for Munich center at zoom 16
+        return map.url.replace(/\{z\}\/\{x\}\/\{y\}/i, '16/34866/22741')
       },
       getYear: function(map) {
         return map.name.split(' ')[1]
