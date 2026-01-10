@@ -43,7 +43,7 @@ npm run build
 
 ## Inspiration
 
-Eine inspirierte Nachnutzung von [luftbilder.berlin.codefor.de](https://luftbilder.berlin.codefor.de/) des [OK Lab Berlin](https://codefor.de/berlin). <img src="public/favicon.png" width="20" height="20" alt="">
+Eine inspirierte Nachnutzung von [luftbilder.berlin.codefor.de](https://luftbilder.berlin.codefor.de/) des [OK Lab Berlin](https://codefor.de/berlin).
 
 ## Technologie
 
