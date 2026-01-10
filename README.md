@@ -1,4 +1,4 @@
-# Muenchen.rewind
+<img src="public/favicon.png" width="32" height="32" alt="Muenchen.rewind"> Muenchen.rewind
 
 Eine Zeitreise aus der Vogelperspektive – Vergleiche historische Luftbilder von München aus verschiedenen Jahren.
 
