@@ -11,8 +11,8 @@
       <strong>Datenquellen:</strong>
     </p>
     <ul>
-      <li>Ein Großteil der Luftbilder stammt aus dem <a href="https://geodatenonline.bayern.de/">GeodatenOnline Portal</a> der <a href="https://www.ldbv.bayern.de/">Bayerischen Vermessungsverwaltung</a>.</li>
-      <li>Das Luftbild 2021 stammt vom <a href="https://opendata.muenchen.de/">OpenData Portal München</a> des <a href="https://geoportal.muenchen.de/">GeodatenService München</a>.</li>
+      <li>Die Luftbilder 1960, 1965, 1970, 1976, 1984, 1993, 1999, 2008, 2013, 2017, 2019, 2021 und 2023 stammen vom <a href="https://geoportal.muenchen.de/portal/luftbilder/">GeodatenService München</a> (<a href="https://www.govdata.de/dl-de/by-2-0">dl-de-by-2.0</a>). Sie zeigen nur das Stadtgebiet; außerhalb bleibt die Karte leer.</li>
+      <li>Die Luftbilder 2003, 2006, 2009, 2012, 2015, 2018, 2020, 2022 und 2024 stammen aus dem <a href="https://geodatenonline.bayern.de/">GeodatenOnline Portal</a> der <a href="https://www.ldbv.bayern.de/">Bayerischen Vermessungsverwaltung</a> (CC BY 4.0).</li>
     </ul>
     <p>
       Eine inspirierte Nachnutzung von <a href="https://luftbilder.berlin.codefor.de">luftbilder.berlin.codefor.de</a> des <a href="https://codefor.de/berlin">OK Lab Berlin</a>.

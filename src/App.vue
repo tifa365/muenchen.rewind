@@ -24,18 +24,24 @@
   import ComparisonMap from './components/ComparisonMap.vue'
   import Nav from './components/Nav.vue'
 
+  // Index of the entry for a given year (by name, not position); fallback if absent
+  const findMapIndex = (maps, year, fallback) => {
+    const i = maps.findIndex(m => m.name.split(' ')[1] === year)
+    return i >= 0 ? i : fallback
+  }
+
   export default {
     name: 'App',
     data() {
       return {
         brand: this.$config.brand,
         maps: this.$config.maps,
-        map: this.$config.maps[0],
+        map: this.$config.maps[findMapIndex(this.$config.maps, '2024', this.$config.maps.length - 1)],
         center: this.$config.view.center,
         zoom: this.$config.view.zoom,
         compareMode: true,
-        leftMap: this.$config.maps[2],  // 2021
-        rightMap: this.$config.maps[this.$config.maps.length - 1]  // 2003
+        leftMap: this.$config.maps[findMapIndex(this.$config.maps, '1960', 0)],
+        rightMap: this.$config.maps[findMapIndex(this.$config.maps, '2024', this.$config.maps.length - 1)]
       }
     },
     components: {

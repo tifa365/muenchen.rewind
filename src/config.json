@@ -12,129 +12,129 @@
   },
   "maps": [
     {
-      "name": "Luftbilder 2024",
+      "name": "Luftbilder 1960",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2024_h",
+        "layers": "gsm:luftbild_1960",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2024",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1960 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2022",
+      "name": "Luftbilder 1965",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2022_h",
+        "layers": "gsm:luftbild_1965",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2022",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1965 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2021",
+      "name": "Luftbilder 1970",
       "type": "wms",
-      "url": "https://geoportal.muenchen.de/geoserver/gsm/luftbild/ows?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "luftbild",
+        "layers": "gsm:luftbild_1970",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2021 (nur München)",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1970 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2020",
+      "name": "Luftbilder 1976",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2020_h",
+        "layers": "gsm:luftbild_1976",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2020",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1976 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2018",
+      "name": "Luftbilder 1984",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2018_h",
+        "layers": "gsm:luftbild_1984",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2018",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1984 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2015",
+      "name": "Luftbilder 1993",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2015_h",
+        "layers": "gsm:luftbild_1993",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2015",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1993 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2012",
+      "name": "Luftbilder 1999",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2012_h",
+        "layers": "gsm:luftbild_1999",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2012",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 1999 (nur München)",
         "minZoom": 5,
         "maxZoom": 20
       }
     },
     {
-      "name": "Luftbilder 2009",
+      "name": "Luftbilder 2003",
       "type": "wms",
       "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
       "options": {
-        "layers": "by_dop_2009_h",
+        "layers": "by_dop_2003_h",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2009",
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2003 (40cm)",
         "minZoom": 5,
         "maxZoom": 20
       }
@@ -156,17 +156,209 @@
       }
     },
     {
-      "name": "Luftbilder 2003",
+      "name": "Luftbilder 2008",
       "type": "wms",
-      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
       "options": {
-        "layers": "by_dop_2003_h",
+        "layers": "gsm:luftbild_2008",
         "format": "image/jpeg",
         "transparent": false,
         "keepBuffer": 2,
         "updateWhenZooming": false,
         "updateWhenIdle": true,
-        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2003 (40cm)",
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2008 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2009",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2009_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2009",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2012",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2012_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2012",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2013",
+      "type": "wms",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
+      "options": {
+        "layers": "gsm:luftbild_2013",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2013 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2015",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2015_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2015",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2017",
+      "type": "wms",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
+      "options": {
+        "layers": "gsm:2017_RGB_20cm_bmpyramid",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2017 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2018",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2018_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2018",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2019",
+      "type": "wms",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
+      "options": {
+        "layers": "gsm:2019_RGB_20cm_bmpyramid",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2019 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2020",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2020_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2020",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2021",
+      "type": "wms",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/luftbild/ows?",
+      "options": {
+        "layers": "luftbild",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2021 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2022",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2022_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2022",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2023",
+      "type": "wms",
+      "url": "https://geoportal.muenchen.de/geoserver/gsm/wms?",
+      "options": {
+        "layers": "gsm:luftbild_2023_20cm",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://opendata.muenchen.de/\" target=\"_blank\">GeodatenService München</a> - Luftbild 2023 (nur München)",
+        "minZoom": 5,
+        "maxZoom": 20
+      }
+    },
+    {
+      "name": "Luftbilder 2024",
+      "type": "wms",
+      "url": "https://geoservices.bayern.de/od/wms/histdop/v1/histdop?",
+      "options": {
+        "layers": "by_dop_2024_h",
+        "format": "image/jpeg",
+        "transparent": false,
+        "keepBuffer": 2,
+        "updateWhenZooming": false,
+        "updateWhenIdle": true,
+        "attribution": "<a href=\"https://geodatenonline.bayern.de/\" target=\"_blank\">Bayerische Vermessungsverwaltung</a> - Historische DOP 2024",
         "minZoom": 5,
         "maxZoom": 20
       }

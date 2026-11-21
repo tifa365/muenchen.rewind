@@ -80,6 +80,12 @@
   import Info from './Info'
   import iconInfo from "@/assets/icon-info.svg"
 
+  // Index of the entry for a given year (by name, not position); fallback if absent
+  const findMapIndex = (maps, year, fallback) => {
+    const i = maps.findIndex(m => m.name.split(' ')[1] === year)
+    return i >= 0 ? i : fallback
+  }
+
   export default {
     name: 'Nav',
     props: {
@@ -99,8 +105,8 @@
     data() {
       return {
         currentMapIndex: this.maps.indexOf(this.map),
-        leftMapIndex: 2,  // 2021
-        rightMapIndex: this.maps.length > 1 ? this.maps.length - 1 : 0,  // 2003
+        leftMapIndex: findMapIndex(this.maps, '1960', 0),
+        rightMapIndex: findMapIndex(this.maps, '2024', this.maps.length - 1),
         searchString: '',
         searchResults: [],
         showResults: false,
@@ -166,12 +172,11 @@
       },
       getBackgroundImage: function(map) {
         const bbox = '11.58,48.136,11.61,48.140'
-        // 2021 uses Munich WMS, others use Bayern
-        if (map.options.layers === 'luftbild') {
-          return `https://geoportal.muenchen.de/geoserver/gsm/luftbild/ows?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=luftbild&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
-        }
-        const layer = map.options.layers || 'by_dop_2024_h'
-        return `https://geoservices.bayern.de/od/wms/histdop/v1/histdop?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${layer}&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
+        // Each entry's own WMS (city or Bayern) and layer
+        const base = map.url || 'https://geoservices.bayern.de/od/wms/histdop/v1/histdop?'
+        const sep = base.endsWith('?') || base.endsWith('&') ? '' : (base.includes('?') ? '&' : '?')
+        const layer = encodeURIComponent(map.options.layers || 'by_dop_2024_h')
+        return `${base}${sep}SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${layer}&STYLES=&FORMAT=image/jpeg&SRS=EPSG:4326&BBOX=${bbox}&WIDTH=600&HEIGHT=160`
       },
       getYear: function(map) {
         return map.name.split(' ')[1]
